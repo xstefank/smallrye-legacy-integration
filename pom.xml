@@ -3,20 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     
     <groupId>org.jboss</groupId>
-    <artifactId>sleipnir</artifactId>
+    <artifactId>eap-smallrye-legacy</artifactId>
     <version>0.0.1</version>
+    <modules>
+        <module>health-smallrye</module>
+    </modules>
     <packaging>pom</packaging>
     
-    <properties>
-        <version.junit>4.12</version.junit>
-    </properties>
     
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 </project>
