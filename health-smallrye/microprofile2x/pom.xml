@@ -30,7 +30,7 @@
 
     <artifactId>wildfly-microprofile-2x-health-smallrye</artifactId>
 
-    <name>WildFly: MicroProfile 2.x Health Extension With SmallRye</name>
+    <name>WildFly SmallRye legacy integration: MicroProfile 2.x Health Extension</name>
     
     <properties>
         <version.wildlfy>16.0.0.Beta1-SNAPSHOT</version.wildlfy>

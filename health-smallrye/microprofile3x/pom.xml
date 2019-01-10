@@ -30,7 +30,7 @@
 
     <artifactId>wildfly-microprofile-3x-health-smallrye</artifactId>
 
-    <name>WildFly: MicroProfile 3.x Health Extension With SmallRye</name>
+    <name>WildFly SmallRye legacy integration: MicroProfile 3.x Health Extension</name>
     
     <properties>
         <version.wildlfy>16.0.0.Beta1-SNAPSHOT</version.wildlfy>
@@ -108,26 +108,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                            <includeGroupIds>io.smallrye</includeGroupIds>
-                            <includeArtifactIds>smallrye-health</includeArtifactIds>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
     
 </project>

@@ -12,10 +12,33 @@
     <artifactId>health-smallrye</artifactId>
     <packaging>pom</packaging>
     
+    <name>Wildfly SmallRye legacy integration: MicroProfile Health integration</name>
+    
     <modules>
         <module>microprofile2x</module>
         <module>microprofile3x</module>
     </modules>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            <includeGroupIds>io.smallrye</includeGroupIds>
+                            <includeArtifactIds>smallrye-health</includeArtifactIds>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>
