@@ -30,7 +30,7 @@
     </resources>
 
     <dependencies>
-        <module name="io.smallrye.health"/>
+        <module name="io.smallrye.health-mp3x"/>
         <module name="io.undertow.core"/>
         <module name="javax.api"/>
         <module name="org.jboss.staxmapper"/>
