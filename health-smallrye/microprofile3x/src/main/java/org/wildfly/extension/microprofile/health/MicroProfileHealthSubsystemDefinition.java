@@ -83,6 +83,7 @@ public class MicroProfileHealthSubsystemDefinition extends PersistentResourceDef
 
         if (registerRuntimeOperations) {
             CheckOperation.register(resourceRegistration);
+            NewConfigurationOperation.register(resourceRegistration);
         }
     }
 
