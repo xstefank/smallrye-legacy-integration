@@ -26,8 +26,8 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <finalName>wildfly-smallrye-legacy-integration-${project.version}</finalName>
-                            <outputDirectory>${project.parent.basedir}</outputDirectory>
+                            <finalName>wildfly-smallrye-legacy-integration</finalName>
+                            <outputDirectory>${build.directory}</outputDirectory>
                             <appendAssemblyId>false</appendAssemblyId>
                             <descriptors>
                                 <descriptor>src/main/assembly/assembly.xml</descriptor>
