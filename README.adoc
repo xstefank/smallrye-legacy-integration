@@ -1,0 +1,22 @@
+= Wildfly SmallRye legacy integration
+
+== Build
+`mvn clean package`
+
+== Deploy
+
+`scripts/deploy.sh dist/target/wildfly-smallrye-legacy-integration.zip $WFLY_HOME`
+
+== Usage
+
+Change the configuration of your server (e.g. standalone.xml) from:
+
+`<extension module="org.wildfly.extension.microprofile.health-smallrye"/>`
+
+to either:
+
+`<extension module="org.wildfly.extension.microprofile.health-smallrye-mp2x"/>`
+
+or:
+
+`<extension module="org.wildfly.extension.microprofile.health-smallrye-mp3x"/>`
