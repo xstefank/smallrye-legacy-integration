@@ -34,6 +34,9 @@
     
     <properties>
         <module.name>org.wildfly.extension.microprofile.health-smallrye-mp3x</module.name>
+        <smallrye.module.name>io.smallrye.health</smallrye.module.name>
+        <smallrye.artifactId>smallrye-health-${version.smallrye.health}</smallrye.artifactId>
+        <version.smallrye.health>1.0.3-SNAPSHOT</version.smallrye.health>
         <version.wildlfy>16.0.0.Beta1-SNAPSHOT</version.wildlfy>
         <version.wildfly.core>8.0.0.Beta1</version.wildfly.core>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -64,7 +67,7 @@
         <dependency>
             <groupId>io.smallrye</groupId>
             <artifactId>smallrye-health</artifactId>
-            <version>1.0.3-SNAPSHOT</version>
+            <version>${version.smallrye.health}</version>
         </dependency>
         <dependency>
             <groupId>org.wildfly</groupId>
@@ -134,11 +137,23 @@
                                 <loadfile srcfile="${temp.file}" property="module.path"/>
                                 <delete file="${temp.file}"/>
 
+                                <tempfile property="temp.file"/>
+                                <echo message="${smallrye.module.name}" file="${temp.file}"/>
+                                <replace file="${temp.file}" token="." value="/"/>
+                                <loadfile srcfile="${temp.file}" property="smallrye.module.path"/>
+                                <delete file="${temp.file}"/>
+
+                                <!-- Copy the main module with MP health extension -->
                                 <delete dir="target/module"/>
                                 <property name="module.dir" value="target/module/${module.path}/main"/>
-                                <property name="module.lib.dir" value="${module.dir}/lib"/>
                                 <copy file="src/main/resources/module/main/module.xml" tofile="${module.dir}/module.xml"/>
                                 <copy file="target/${project.artifactId}.jar" todir="${module.dir}"/>
+                                <echo>Module ${module.name} has been created in the target/module directory. You can copy it to your WildFly installation.</echo>
+
+                                <!-- Copy the the smallrye health module -->
+                                <property name="smallrye.module.dir" value="target/module/${smallrye.module.path}/main"/>
+                                <copy file="src/main/resources/module/smallrye/module.xml" tofile="${smallrye.module.dir}/module.xml"/>
+                                <copy file="target/lib/${smallrye.artifactId}.jar" tofile="${smallrye.module.dir}/smallrye-health.jar"/>
                                 <echo>Module ${module.name} has been created in the target/module directory. You can copy it to your WildFly installation.</echo>
                             </target>
                         </configuration>
