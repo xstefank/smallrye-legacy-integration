@@ -20,13 +20,13 @@
   ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
-<module name="org.wildfly.extension.microprofile.health-smallrye-mp3.x" xmlns="urn:jboss:module:1.8">
+<module name="org.wildfly.extension.microprofile.health-smallrye-mp3x" xmlns="urn:jboss:module:1.8">
     <properties>
         <property name="jboss.api" value="private"/>
     </properties>
 
     <resources>
-        <resource-root path="wildfly-microprofile-health-smallrye-16.0.0.Beta1-SNAPSHOT.jar"/>
+        <resource-root path="wildfly-microprofile-3x-health-smallrye.jar"/>
     </resources>
 
     <dependencies>

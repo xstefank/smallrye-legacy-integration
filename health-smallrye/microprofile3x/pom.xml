@@ -33,6 +33,7 @@
     <name>WildFly SmallRye legacy integration: MicroProfile 3.x Health Extension</name>
     
     <properties>
+        <module.name>org.wildfly.extension.microprofile.health-smallrye-mp3x</module.name>
         <version.wildlfy>16.0.0.Beta1-SNAPSHOT</version.wildlfy>
         <version.wildfly.core>8.0.0.Beta1</version.wildfly.core>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -108,5 +109,44 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <inherited>false</inherited>
+                <executions>
+                    <execution>
+                        <id>build-dist</id>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <target>
+                                <!-- Replace the '.' in ${module.name} with '/' to get its path  -->
+                                <tempfile property="temp.file"/>
+                                <echo message="${module.name}" file="${temp.file}"/>
+                                <replace file="${temp.file}" token="." value="/"/>
+                                <loadfile srcfile="${temp.file}" property="module.path"/>
+                                <delete file="${temp.file}"/>
+
+                                <delete dir="target/module"/>
+                                <property name="module.dir" value="target/module/${module.path}/main"/>
+                                <property name="module.lib.dir" value="${module.dir}/lib"/>
+                                <copy file="src/main/resources/module/main/module.xml" tofile="${module.dir}/module.xml"/>
+                                <copy file="target/${project.artifactId}.jar" todir="${module.dir}"/>
+                                <echo>Module ${module.name} has been created in the target/module directory. You can copy it to your WildFly installation.</echo>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
     
 </project>

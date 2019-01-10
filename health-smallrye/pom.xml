@@ -11,9 +11,9 @@
 
     <artifactId>health-smallrye</artifactId>
     <packaging>pom</packaging>
-    
+
     <name>Wildfly SmallRye legacy integration: MicroProfile Health integration</name>
-    
+
     <modules>
         <module>microprofile2x</module>
         <module>microprofile3x</module>
@@ -37,7 +37,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 
