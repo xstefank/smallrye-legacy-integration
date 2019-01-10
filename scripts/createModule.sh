@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 MODULE_NAME=$1
 BASE_DIR=$2
