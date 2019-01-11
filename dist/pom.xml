@@ -6,13 +6,13 @@
     
     
     <parent>
-        <artifactId>wildfly-smallrye-legacy-integration</artifactId>
+        <artifactId>smallrye-legacy-integration</artifactId>
         <groupId>org.jboss</groupId>
         <version>0.0.1</version>
     </parent>
 
     <artifactId>dist</artifactId>
-    <name>WildFly SmallRye legacy integration: Distribution</name>
+    <name>SmallRye legacy integration: Distribution</name>
     
     <build>
         <plugins>
@@ -29,7 +29,7 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <finalName>wildfly-smallrye-legacy-integration</finalName>
+                            <finalName>smallrye-legacy-integration</finalName>
                             <outputDirectory>${build.directory}</outputDirectory>
                             <appendAssemblyId>false</appendAssemblyId>
                             <descriptors>

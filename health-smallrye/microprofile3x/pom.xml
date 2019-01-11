@@ -28,9 +28,9 @@
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>wildfly-microprofile-3x-health-smallrye</artifactId>
+    <artifactId>microprofile-3x-health-smallrye</artifactId>
 
-    <name>WildFly SmallRye legacy integration: MicroProfile 3.x Health Extension</name>
+    <name>SmallRye legacy integration: MicroProfile 3.x Health Extension</name>
     
     <properties>
         <module.name>org.wildfly.extension.microprofile.health-smallrye-mp3x</module.name>
