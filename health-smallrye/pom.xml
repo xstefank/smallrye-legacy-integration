@@ -7,7 +7,7 @@
     <parent>
         <artifactId>smallrye-legacy-integration</artifactId>
         <groupId>org.jboss</groupId>
-        <version>0.0.1</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>health-smallrye</artifactId>
