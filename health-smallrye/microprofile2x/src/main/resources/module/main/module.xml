@@ -26,7 +26,7 @@
     </properties>
 
     <resources>
-        <resource-root path="wildfly-microprofile-2x-health-smallrye.jar"/>
+        <resource-root path="microprofile-2x-health-smallrye.jar"/>
     </resources>
 
     <dependencies>
