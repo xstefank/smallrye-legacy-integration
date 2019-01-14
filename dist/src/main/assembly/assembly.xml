@@ -30,6 +30,14 @@ MA 02110-1301  USA
     <includeBaseDirectory>false</includeBaseDirectory>
     <fileSets>
         <fileSet>
+            <directory>${project.parent.basedir}/subsystem-base/health-subsystem-base/target/module</directory>
+            <outputDirectory>modules/system/layers/base</outputDirectory>
+            <includes>
+                <include>**/*.*</include>
+            </includes>
+            <useDefaultExcludes>true</useDefaultExcludes>
+        </fileSet>
+        <fileSet>
             <directory>${project.parent.basedir}/health-smallrye/microprofile2x/target/module</directory>
             <outputDirectory>modules/system/layers/base</outputDirectory>
             <includes>

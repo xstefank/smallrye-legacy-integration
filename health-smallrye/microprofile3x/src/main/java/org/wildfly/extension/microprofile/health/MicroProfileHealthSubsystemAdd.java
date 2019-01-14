@@ -32,7 +32,7 @@ import org.jboss.as.controller.OperationFailedException;
 import org.jboss.as.server.AbstractDeploymentChainStep;
 import org.jboss.as.server.DeploymentProcessorTarget;
 import org.jboss.dmr.ModelNode;
-import org.wildfly.extension.microprofile.health._private.MicroProfileHealthLogger;
+//import org.wildfly.extension.microprofile.health._private.MicroProfileHealthLogger;
 import org.wildfly.extension.microprofile.health.deployment.DependencyProcessor;
 import org.wildfly.extension.microprofile.health.deployment.DeploymentProcessor;
 
@@ -64,6 +64,6 @@ class MicroProfileHealthSubsystemAdd extends AbstractBoottimeAddStepHandler {
         HealthReporterService.install(context);
         HealthContextService.install(context, securityEnabled);
 
-        MicroProfileHealthLogger.LOGGER.activatingSubsystem();
+//        MicroProfileHealthLogger.LOGGER.activatingSubsystem();
     }
 }

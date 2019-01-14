@@ -26,10 +26,11 @@
     </properties>
 
     <resources>
-        <resource-root path="wildfly-microprofile-2x-health-smallrye.jar"/>
+        <resource-root path="microprofile-2x-health-smallrye.jar"/>
     </resources>
 
     <dependencies>
+        <module name="org.wildfly.extension.microprofile.health-subsystem-base"/>
         <module name="io.smallrye.health-mp2x"/>
         <module name="io.undertow.core"/>
         <module name="javax.api"/>
