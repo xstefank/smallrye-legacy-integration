@@ -21,9 +21,6 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 <module name="org.wildfly.extension.microprofile.health-smallrye-mp3x" xmlns="urn:jboss:module:1.8">
-    <properties>
-        <property name="jboss.api" value="private"/>
-    </properties>
 
     <resources>
         <resource-root path="microprofile-3x-health-smallrye.jar"/>
@@ -32,19 +29,8 @@
     <dependencies>
         <module name="org.wildfly.extension.microprofile.health-subsystem-base"/>
         <module name="io.smallrye.health-mp3x"/>
-        <module name="io.undertow.core"/>
-        <module name="javax.api"/>
         <module name="org.jboss.staxmapper"/>
         <module name="org.jboss.as.controller"/>
-        <module name="org.jboss.as.server"/>
-        <module name="org.jboss.modules"/>
-        <module name="org.jboss.msc"/>
-        <module name="org.jboss.logging"/>
-        <module name="org.jboss.vfs"/>
-        <module name="org.eclipse.microprofile.health.api"/>
-        <module name="org.jboss.as.weld"/>
-        <module name="org.jboss.as.ee"/>
-        <module name="javax.enterprise.api"/>
-        <module name="javax.annotation.api"/>
+        <!--<module name="org.eclipse.microprofile.health.api"/>-->
     </dependencies>
 </module>
