@@ -22,44 +22,20 @@
 
 package org.wildfly.extension.microprofile.health;
 
-import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.SUBSYSTEM;
-
-import org.jboss.as.controller.Extension;
 import org.jboss.as.controller.ExtensionContext;
-import org.jboss.as.controller.ModelVersion;
-import org.jboss.as.controller.PathElement;
 import org.jboss.as.controller.RunningMode;
 import org.jboss.as.controller.SubsystemRegistration;
 import org.jboss.as.controller.descriptions.ResourceDescriptionResolver;
 import org.jboss.as.controller.descriptions.StandardResourceDescriptionResolver;
 import org.jboss.as.controller.operations.common.GenericSubsystemDescribeHandler;
-import org.jboss.as.controller.parsing.ExtensionParsingContext;
 import org.jboss.as.controller.registry.ManagementResourceRegistration;
 
-/**
- * @author <a href="http://jmesnil.net/">Jeff Mesnil</a> (c) 2018 Red Hat inc.
- */
-public class MicroProfileHealthExtension implements Extension {
+public class MicroProfile3xHealthExtension extends MicroProfileHealthExtension {
 
-    static final String EXTENSION_NAME = "org.wildfly.extension.microprofile.health.smallrye";
-
-    /**
-     * The name of our subsystem within the model.
-     */
-    public static final String SUBSYSTEM_NAME = "microprofile-health-smallrye";
-
-    protected static final PathElement SUBSYSTEM_PATH = PathElement.pathElement(SUBSYSTEM, SUBSYSTEM_NAME);
-
-    private static final String RESOURCE_NAME = MicroProfileHealthExtension.class.getPackage().getName() + ".LocalDescriptions";
-
-    protected static final ModelVersion VERSION_1_0_0 = ModelVersion.create(1, 0, 0);
-    private static final ModelVersion CURRENT_MODEL_VERSION = VERSION_1_0_0;
-
-    private static final MicroProfileHealthParser_1_0 CURRENT_PARSER = new MicroProfileHealthParser_1_0();
+    private static final String RESOURCE_NAME = MicroProfile3xHealthExtension.class.getPackage().getName() + ".LocalDescriptions";
 
     static ResourceDescriptionResolver getResourceDescriptionResolver(final String... keyPrefix) {
         return getResourceDescriptionResolver(true, keyPrefix);
-
     }
 
     static ResourceDescriptionResolver getResourceDescriptionResolver(final boolean useUnprefixedChildTypes, final String... keyPrefix) {
@@ -70,7 +46,7 @@ public class MicroProfileHealthExtension implements Extension {
             }
             prefix.append(kp);
         }
-        return new StandardResourceDescriptionResolver(prefix.toString(), RESOURCE_NAME, MicroProfileHealthExtension.class.getClassLoader(), true, useUnprefixedChildTypes);
+        return new StandardResourceDescriptionResolver(prefix.toString(), RESOURCE_NAME, MicroProfile3xHealthExtension.class.getClassLoader(), true, useUnprefixedChildTypes);
     }
 
     @Override
@@ -78,12 +54,7 @@ public class MicroProfileHealthExtension implements Extension {
         final SubsystemRegistration subsystem = context.registerSubsystem(SUBSYSTEM_NAME, CURRENT_MODEL_VERSION);
         subsystem.registerXMLElementWriter(CURRENT_PARSER);
 
-        final ManagementResourceRegistration registration = subsystem.registerSubsystemModel(new MicroProfileHealthSubsystemDefinition(context.isRuntimeOnlyRegistrationValid()  && context.getRunningMode() == RunningMode.NORMAL));
+        final ManagementResourceRegistration registration = subsystem.registerSubsystemModel(new MicroProfile3xHealthSubsystemDefinition(context.isRuntimeOnlyRegistrationValid()  && context.getRunningMode() == RunningMode.NORMAL));
         registration.registerOperationHandler(GenericSubsystemDescribeHandler.DEFINITION, GenericSubsystemDescribeHandler.INSTANCE);
-    }
-
-    @Override
-    public void initializeParsers(ExtensionParsingContext context) {
-        context.setSubsystemXmlMapping(SUBSYSTEM_NAME, MicroProfileHealthParser_1_0.NAMESPACE, CURRENT_PARSER);
     }
 }

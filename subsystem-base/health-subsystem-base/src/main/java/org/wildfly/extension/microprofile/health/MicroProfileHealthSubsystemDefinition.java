@@ -61,7 +61,7 @@ public class MicroProfileHealthSubsystemDefinition extends PersistentResourceDef
             .setAllowExpression(true)
             .build();
     static final AttributeDefinition[] ATTRIBUTES = { SECURITY_ENABLED };
-    private boolean registerRuntimeOperations;
+    protected boolean registerRuntimeOperations;
 
     protected MicroProfileHealthSubsystemDefinition(boolean registerRuntimeOperations) {
         super(new Parameters(MicroProfileHealthExtension.SUBSYSTEM_PATH,

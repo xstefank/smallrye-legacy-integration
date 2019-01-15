@@ -1,1 +1,1 @@
-org.wildfly.extension.microprofile.health.MicroProfileHealthExtension
+org.wildfly.extension.microprofile.health.MicroProfile3xHealthExtension

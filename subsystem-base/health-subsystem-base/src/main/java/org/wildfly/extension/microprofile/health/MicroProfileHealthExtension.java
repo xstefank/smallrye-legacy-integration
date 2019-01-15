@@ -53,13 +53,12 @@ public class MicroProfileHealthExtension implements Extension {
     private static final String RESOURCE_NAME = MicroProfileHealthExtension.class.getPackage().getName() + ".LocalDescriptions";
 
     protected static final ModelVersion VERSION_1_0_0 = ModelVersion.create(1, 0, 0);
-    private static final ModelVersion CURRENT_MODEL_VERSION = VERSION_1_0_0;
+    protected static final ModelVersion CURRENT_MODEL_VERSION = VERSION_1_0_0;
 
-    private static final MicroProfileHealthParser_1_0 CURRENT_PARSER = new MicroProfileHealthParser_1_0();
+    protected static final MicroProfileHealthParser_1_0 CURRENT_PARSER = new MicroProfileHealthParser_1_0();
 
     static ResourceDescriptionResolver getResourceDescriptionResolver(final String... keyPrefix) {
         return getResourceDescriptionResolver(true, keyPrefix);
-
     }
 
     static ResourceDescriptionResolver getResourceDescriptionResolver(final boolean useUnprefixedChildTypes, final String... keyPrefix) {
