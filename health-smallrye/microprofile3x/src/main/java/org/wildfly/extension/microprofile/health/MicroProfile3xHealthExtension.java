@@ -25,28 +25,13 @@ package org.wildfly.extension.microprofile.health;
 import org.jboss.as.controller.ExtensionContext;
 import org.jboss.as.controller.RunningMode;
 import org.jboss.as.controller.SubsystemRegistration;
-import org.jboss.as.controller.descriptions.ResourceDescriptionResolver;
-import org.jboss.as.controller.descriptions.StandardResourceDescriptionResolver;
 import org.jboss.as.controller.operations.common.GenericSubsystemDescribeHandler;
 import org.jboss.as.controller.registry.ManagementResourceRegistration;
 
 public class MicroProfile3xHealthExtension extends MicroProfileHealthExtension {
-
-    private static final String RESOURCE_NAME = MicroProfile3xHealthExtension.class.getPackage().getName() + ".LocalDescriptions";
-
-    static ResourceDescriptionResolver getResourceDescriptionResolver(final String... keyPrefix) {
-        return getResourceDescriptionResolver(true, keyPrefix);
-    }
-
-    static ResourceDescriptionResolver getResourceDescriptionResolver(final boolean useUnprefixedChildTypes, final String... keyPrefix) {
-        StringBuilder prefix = new StringBuilder();
-        for (String kp : keyPrefix) {
-            if (prefix.length() > 0){
-                prefix.append('.');
-            }
-            prefix.append(kp);
-        }
-        return new StandardResourceDescriptionResolver(prefix.toString(), RESOURCE_NAME, MicroProfile3xHealthExtension.class.getClassLoader(), true, useUnprefixedChildTypes);
+    
+    public MicroProfile3xHealthExtension() {
+        resourceClassLoader = MicroProfile3xHealthExtension.class.getClassLoader();
     }
 
     @Override

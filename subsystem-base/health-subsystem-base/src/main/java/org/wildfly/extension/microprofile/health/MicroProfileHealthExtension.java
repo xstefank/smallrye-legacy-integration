@@ -56,12 +56,18 @@ public class MicroProfileHealthExtension implements Extension {
     protected static final ModelVersion CURRENT_MODEL_VERSION = VERSION_1_0_0;
 
     protected static final MicroProfileHealthParser_1_0 CURRENT_PARSER = new MicroProfileHealthParser_1_0();
+    
+    protected static ClassLoader resourceClassLoader;
 
-    static ResourceDescriptionResolver getResourceDescriptionResolver(final String... keyPrefix) {
+    public MicroProfileHealthExtension() {
+        resourceClassLoader = MicroProfileHealthExtension.class.getClassLoader();
+    }
+
+    public static ResourceDescriptionResolver getResourceDescriptionResolver(final String... keyPrefix) {
         return getResourceDescriptionResolver(true, keyPrefix);
     }
 
-    static ResourceDescriptionResolver getResourceDescriptionResolver(final boolean useUnprefixedChildTypes, final String... keyPrefix) {
+    private static ResourceDescriptionResolver getResourceDescriptionResolver(final boolean useUnprefixedChildTypes, final String... keyPrefix) {
         StringBuilder prefix = new StringBuilder();
         for (String kp : keyPrefix) {
             if (prefix.length() > 0){
@@ -69,7 +75,7 @@ public class MicroProfileHealthExtension implements Extension {
             }
             prefix.append(kp);
         }
-        return new StandardResourceDescriptionResolver(prefix.toString(), RESOURCE_NAME, MicroProfileHealthExtension.class.getClassLoader(), true, useUnprefixedChildTypes);
+        return new StandardResourceDescriptionResolver(prefix.toString(), RESOURCE_NAME, resourceClassLoader, true, useUnprefixedChildTypes);
     }
 
     @Override

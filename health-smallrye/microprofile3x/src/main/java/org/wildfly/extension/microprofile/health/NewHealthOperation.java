@@ -32,7 +32,7 @@ import org.jboss.dmr.ModelType;
 
 public class NewHealthOperation extends AbstractRuntimeOnlyHandler {
 
-    private static final OperationDefinition DEFINITION = new SimpleOperationDefinitionBuilder("new-op", MicroProfile3xHealthExtension.getResourceDescriptionResolver(MicroProfileHealthExtension.SUBSYSTEM_NAME))
+    private static final OperationDefinition DEFINITION = new SimpleOperationDefinitionBuilder("new-op", MicroProfileHealthExtension.getResourceDescriptionResolver(MicroProfileHealthExtension.SUBSYSTEM_NAME))
             .setRuntimeOnly()
             .setReplyType(ModelType.OBJECT)
             .setReplyValueType(ModelType.OBJECT)

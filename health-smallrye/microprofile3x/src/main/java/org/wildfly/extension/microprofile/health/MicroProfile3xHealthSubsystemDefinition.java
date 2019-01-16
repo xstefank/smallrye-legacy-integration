@@ -26,7 +26,7 @@ import org.jboss.as.controller.registry.ManagementResourceRegistration;
 
 public class MicroProfile3xHealthSubsystemDefinition extends MicroProfileHealthSubsystemDefinition {
     
-    protected MicroProfile3xHealthSubsystemDefinition(boolean registerRuntimeOperations) {
+    MicroProfile3xHealthSubsystemDefinition(boolean registerRuntimeOperations) {
         super(registerRuntimeOperations);
     }
     
