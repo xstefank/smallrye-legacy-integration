@@ -91,7 +91,21 @@
                             </arguments>
                         </configuration>
                     </execution>
-
+                    <execution>
+                        <id>health-base-module</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${scriptsdir}/copyHealthBaseModule.sh</executable>
+                            <arguments>
+                                <argument>../../subsystem-base/health-subsystem-base/target/module/org/wildfly/extension/microprofile/health-subsystem-base</argument>
+                                <argument>${build.directory}/module/org/wildfly/extension/microprofile/health-subsystem-base-mp2x</argument>
+                                <argument>-mp2x</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
 

@@ -26,7 +26,7 @@
     </properties>
 
     <resources>
-        <resource-root path="smallrye-health.jar"/>
+        <resource-root path="smallrye-health-1.0.3-SNAPSHOT.jar"/>
     </resources>
 
     <dependencies>
