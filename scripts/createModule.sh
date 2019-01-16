@@ -1,14 +1,20 @@
 #!/bin/sh
 
 MODULE_NAME=$1
-BASE_DIR=$2
-ARTEFACT_NAME=$3
+MODULE_XML=$2
+ARTEFACT=$3
+OUTPUT_DIR=$4
 
 MODULE_PATH=`sed -r 's#\.#/#g' <<< ${MODULE_NAME}`
-MODULE_DIR=${BASE_DIR}/target/module/${MODULE_PATH}/main
+MODULE_DIR=${OUTPUT_DIR}/${MODULE_PATH}/main
+
+
+if [[ ! -d ${MODULE_DIR} ]]; then
+    mkdir -p ${MODULE_DIR}
+fi
 
 # copy resources
-cp ${BASE_DIR}/src/main/resources/module/main/module.xml ${MODULE_DIR}/module.xml
-cp ${BASE_DIR}/target/${ARTEFACT_NAME} ${MODULE_DIR}
+cp ${MODULE_XML} ${MODULE_DIR}/module.xml
+cp ${ARTEFACT} ${MODULE_DIR}
 
-echo "Module ${MODULE_NAME} has been created in the target/module directory. You can copy it to your WildFly installation"
+echo "Module ${MODULE_NAME} has been created in the ${OUTPUT_DIR} directory. You can copy it to your server installation."

@@ -14,6 +14,7 @@
     <name>SmallRye legacy integration: MicroProfile Health subsystem base</name>
 
     <properties>
+        <scriptsdir>../../scripts</scriptsdir>
         <version.io.smallrye.smallrye-health>1.0.2</version.io.smallrye.smallrye-health>
         <version.javax.json.api>1.1.2</version.javax.json.api>
         <version.junit>4.12</version.junit>
@@ -97,6 +98,29 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
+            <plugin>
+                <artifactId>exec-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <executions>
+                    <execution>
+                        <id>health-subsystem-base-module</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${scriptsdir}/createModule.sh</executable>
+                            <arguments>
+                                <argument>${module.name}</argument>
+                                <argument>${basedir}/src/main/resources/module/main/module.xml</argument>
+                                <argument>${build.directory}/${build.finalName}.jar</argument>
+                                <argument>${build.directory}/module</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
