@@ -1,12 +1,47 @@
 = SmallRye legacy integration
 
+== PoC verification
+
+As neither MP Health nor its SmallRye implementation are updated to the breaking changes so far
+the PoC produces a custom change on which subsystem inclusion can be verified.
+
+- install custom SmallRye health 1.0.3-SNAPSHOT version:
+  `scripts/preparePoC.sh`
+- `mvn clean install`
+- `scripts/deploy dist/target/smallrye-legacy-integration.zip $WFLY_HOME`
+- change configuration of `$WFLY_HOME` according to <<usage>> section
+
+Now you can test PoC:
+
+`/subsystem=microprofile-health-smallrye:check`
+
+mp2x - 
+```
+"result" => {
+        "outcome" => "UP",
+        "checks" => []
+    }
+```
+
+mp3x -
+```
+"result" => {
+        "status" => "UP",
+        "checks" => []
+    }
+```
+
+which is change in SmallRye implementation.
+
+
 == Build
-`mvn clean package`
+`mvn clean install`
 
 == Deploy
 
-`scripts/deploy.sh dist/target/wildfly-smallrye-legacy-integration.zip $WFLY_HOME`
+`scripts/deploy.sh dist/target/smallrye-legacy-integration.zip $WFLY_HOME`
 
+[[usage]]
 == Usage
 
 Change the configuration of your server (e.g. standalone.xml) from:
