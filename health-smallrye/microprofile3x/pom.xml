@@ -38,8 +38,6 @@
         <smallrye.module.name>io.smallrye.health-mp3x</smallrye.module.name>
         <smallrye.artifactId>smallrye-health-${version.smallrye.health}</smallrye.artifactId>
         <version.smallrye.health>1.0.3-SNAPSHOT</version.smallrye.health>
-        <version.wildlfy>16.0.0.Beta1-SNAPSHOT</version.wildlfy>
-        <version.wildfly.core>8.0.0.Beta1</version.wildfly.core>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
